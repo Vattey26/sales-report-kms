@@ -1,0 +1,33 @@
+flowchart TB
+  analyst["Analyst<br/>[Person]<br/>head office"]:::person
+  manager["Branch manager<br/>[Person]<br/>own branch only"]:::person
+  pos["Branch POS systems<br/>[External system, x3]"]:::external
+  mail["E-mail service<br/>[External system]"]:::external
+
+  subgraph boundary["Monthly Sales Report System"]
+    scheduler["Scheduler<br/>[cron / systemd timer]<br/>starts the nightly and monthly runs"]:::container
+    landing[("Landing zone<br/>[File system: data/yyyy-MM]<br/>raw daily CSV files, validated rows, reject log")]:::store
+    ingest["Ingest job<br/>[Java 25 command-line app]<br/>validates and parses CSV rows"]:::container
+    batch["Report batch<br/>[Java 25 command-line app]<br/>aggregation engine and PDF / Excel / HTML renderers"]:::container
+    store[("Report store<br/>[File system: PDF, XLSX, HTML, JSON]<br/>finished monthly reports")]:::store
+    desktop["Desktop viewer<br/>[JavaFX application]<br/>analysts browse and export reports"]:::container
+    web["Web report page<br/>[Java 25 web server + HTML]<br/>per-branch pages for managers"]:::container
+  end
+
+  pos -- "uploads daily CSV files [SFTP]" --> landing
+  scheduler -- "starts nightly run [command line]" --> ingest
+  scheduler -- "starts monthly run, 06:00 on day 2 [command line]" --> batch
+  ingest -- "reads raw files, writes validated rows and reject log [file system]" --> landing
+  batch -- "reads validated rows [file system]" --> landing
+  batch -- "writes reports [file system]" --> store
+  batch -- "sends report-ready e-mail [SMTP]" --> mail
+  desktop -- "reads reports [file system]" --> store
+  web -- "reads HTML and JSON reports [file system]" --> store
+  analyst -- "views and exports reports [JavaFX UI]" --> desktop
+  analyst -- "views reports [HTTPS]" --> web
+  manager -- "views own branch report [HTTPS]" --> web
+
+  classDef person fill:#08427b,color:#ffffff,stroke:#052e56
+  classDef container fill:#1168bd,color:#ffffff,stroke:#0b4884
+  classDef store fill:#0b4884,color:#ffd54f,stroke:#052e56
+  classDef external fill:#8a8a8a,color:#ffffff,stroke:#6b6b6b

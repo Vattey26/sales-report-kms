@@ -1,0 +1,15 @@
+flowchart TB
+  analyst["Analyst<br/>[Person]<br/>head office; views and exports all reports"]:::person
+  manager["Branch manager<br/>[Person]<br/>PNH, REP, BTB; sees own branch only"]:::person
+  sys["Monthly Sales Report System<br/>[Software System]<br/>ingests branch sales, produces monthly reports"]:::system
+  pos["Branch POS systems<br/>[External system, x3]<br/>export one CSV file per day"]:::external
+  mail["E-mail service<br/>[External system]<br/>delivers the report-ready mail to the finance director"]:::external
+
+  analyst -- "views and exports reports" --> sys
+  manager -- "views own branch report" --> sys
+  pos -- "uploads daily CSV files [SFTP]" --> sys
+  sys -- "sends report-ready e-mail [SMTP]" --> mail
+
+  classDef person fill:#08427b,color:#ffffff,stroke:#052e56
+  classDef system fill:#1168bd,color:#ffffff,stroke:#0b4884
+  classDef external fill:#8a8a8a,color:#ffffff,stroke:#6b6b6b
