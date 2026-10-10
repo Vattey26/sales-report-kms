@@ -1,6 +1,6 @@
-package main.java.edu.itc.salesreport.ingest;
+package edu.itc.salesreport.ingest;
 
-import main.java.edu.itc.salesreport.model.SaleTransaction;
+import edu.itc.salesreport.model.SaleTransaction;
 
 public interface TransactionParser {
     SaleTransaction parse(String line) throws InvalidRowException;

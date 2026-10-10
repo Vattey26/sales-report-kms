@@ -1,6 +1,6 @@
-package test.java.edu.itc.salesreport.ingest;
+package edu.itc.salesreport.ingest;
 
-import main.java.edu.itc.salesreport.model.PaymentMethod;
+import edu.itc.salesreport.model.PaymentMethod;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -13,8 +13,8 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CsvTransactionParserTest {
-    
-private final TransactionParser parser = new CsvTransactionParser();
+
+    private final TransactionParser parser = new CsvTransactionParser();
 
     @Test
     void parsesAValidRow() throws InvalidRowException {

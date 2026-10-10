@@ -1,19 +1,19 @@
-package main.java.edu.itc.salesreport.model;
+package edu.itc.salesreport.model;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public record SaleTransaction (String branch, LocalDate date,
+public record SaleTransaction(String branch, LocalDate date,
         String receiptNo, String sku, String productName,
         String category, int quantity, BigDecimal unitPrice,
-        BigDecimal discount, PaymentMethod paymentMethod){
-    
+        BigDecimal discount, PaymentMethod paymentMethod) {
+
     public SaleTransaction {
         Objects.requireNonNull(branch, "branch");
         Objects.requireNonNull(date, "date");
-        Objects.requireNonNull(receiptNo, "RecieptNo");
+        Objects.requireNonNull(receiptNo, "receiptNo");
         Objects.requireNonNull(sku, "sku");
         Objects.requireNonNull(productName, "productName");
         Objects.requireNonNull(category, "category");

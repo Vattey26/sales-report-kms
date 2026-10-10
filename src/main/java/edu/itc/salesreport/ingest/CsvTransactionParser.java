@@ -1,7 +1,11 @@
-package main.java.edu.itc.salesreport.ingest;
+package edu.itc.salesreport.ingest;
 
-import main.java.edu.itc.salesreport.model.PaymentMethod;
-import main.java.edu.itc.salesreport.model.SaleTransaction;
+import edu.itc.salesreport.model.PaymentMethod;
+import edu.itc.salesreport.model.SaleTransaction;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Set;
+import java.util.function.Function;
 
 public final class CsvTransactionParser implements TransactionParser {
 

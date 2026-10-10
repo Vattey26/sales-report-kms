@@ -1,10 +1,17 @@
-package test.java.edu.itc.salesreport.model;
+package edu.itc.salesreport.model;
 
+import org.junit.jupiter.api.Test;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SaleTransactionTest {
-    
-private static SaleTransaction sale(int qty, String price, String discount) {
+
+    private static SaleTransaction sale(int qty, String price, String discount) {
         return new SaleTransaction("PNH", LocalDate.of(2026, 9, 1), "PNH-000001",
                 "SKU-1", "Test item", "Grocery", qty,
                 new BigDecimal(price), new BigDecimal(discount), PaymentMethod.CASH);
