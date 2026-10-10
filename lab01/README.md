@@ -11,6 +11,7 @@ Team: SalesReport · Members: Hen Chhordavattey (Vattey26), Chheng Kimter (Chhen
 | lab01/design-review.md | Cohesion, coupling ($C_a, C_e$), instability ($I$), and QA-4 review | Chheng Kimter |
 | lab01/adr/0001-architecture-style-release-1.md | Architectural style decision record (Modular Monolith) | Chheng Kimter, Hen Chhordavattey |
 | lab01/adr/0002-branch-to-head-office-data-flow.md | Branch-to-head-office data flow and partial-failure recovery | Chheng Kimter, Hen Chhordavattey |
+| lab01/atam.md | ATAM-style trade-off analysis of candidates A, B, C confirming ADR-0001 | Hen Chhordavattey, Chheng Kimter |
 | pom.xml, src/**, tools/SampleData.java | sales-report 0.1.0-SNAPSHOT: model, parser, renderers, loader, tests | Hen Chhordavattey, Chheng Kimter |
 
 ## Inputs reused from earlier labs
@@ -20,3 +21,4 @@ None (first lab).
 | Date | Lab | Change | Commit or tag |
 |------|-----|--------|---------------|
 | 2026-10-10 | Lab-01 | Project created: model, parser, renderers, loader; 2 ADRs | lab-01 |
+| 2026-10-10 | Lab-01 | Challenge: ATAM-style evaluation of candidate architectures confirming ADR-0001 | lab-01-atam |
